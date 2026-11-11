@@ -49,9 +49,10 @@ In AMP unter *Configuration › Instance Deployment › Configuration Repositori
 Vladislavvk1337/amp-template-haben:main
 ```
 
-Dann *Fetch latest*. AMP liest Configuration Repositories nur aus **öffentlichen GitHub-Repositories**.
-Alternativ die Dateien direkt auf den AMP-Host kopieren: `./install-to-amp.sh` (siehe
-[DEV_INSTALLATION.md](DEV_INSTALLATION.md)).
+Dann *Fetch latest* und den **Browser neu laden**. Beim Anlegen einer Instanz erscheint **Haben** (Quelle
+`amp-haben`). AMP liest Configuration Repositories nur aus **öffentlichen GitHub-Repositories** und nur, wenn im
+Hauptverzeichnis eine `manifest.json` mit eigener `id` liegt. Alternativ die Dateien direkt auf den AMP-Host
+kopieren: `./install-to-amp.sh` (siehe [DEV_INSTALLATION.md](DEV_INSTALLATION.md)).
 
 ## Kurzanleitung
 
@@ -182,6 +183,7 @@ Die CI (`.github/workflows/pruefen.yml`) prüft Syntax, ShellCheck, JSON und ob 
 
 | Datei | Inhalt |
 |---|---|
+| `manifest.json` | macht das Repository für AMP zur Template-Quelle (eigene `id`, Präfix `amp-haben`) |
 | `haben.kvp` | Metadaten und Startkonfiguration der Instanz |
 | `habenconfig.json` | Einstellungen in der AMP-Oberfläche |
 | `habenports.json` | Web-Port (der Datenbank-Port bewusst nicht) |
