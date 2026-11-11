@@ -22,7 +22,7 @@ Der Instanzordner liegt auf dem Host unter `/home/amp/.ampdata/instances/<Instan
 1. *Configuration › Instance Deployment › Configuration Repositories*: `Vladislavvk1337/amp-template-haben:main`
    hinzufügen.
 2. *Fetch latest*, danach den **Browser neu laden** (F5).
-3. Prüfen: Beim Anlegen einer Instanz erscheint **Haben** in der Anwendungsliste (Quelle bzw. Präfix `amp-haben`).
+3. Prüfen: Beim Anlegen einer Instanz erscheint **Haben - Software** in der Anwendungsliste.
    Fehlt es: Im Repository muss `manifest.json` im Hauptverzeichnis liegen; im AMP-Log nach
    `Vladislavvk1337/amp-template-haben` suchen. Hilft das nicht, ADS neu starten (`ampinstmgr restart ADS01`).
 
