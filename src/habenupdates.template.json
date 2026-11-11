@@ -1,0 +1,18 @@
+[
+    {
+        "UpdateStageName": "Haben-Skript bereitstellen",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"mkdir -p '{{$FullBaseDir}}scripts' && echo '@@HABEN_SH_BASE64@@' | base64 -d > '{{$FullBaseDir}}scripts/haben.sh' && chmod 755 '{{$FullBaseDir}}scripts/haben.sh' && echo 'Haben-Skript @@HABEN_SH_SHA256@@ bereitgestellt'\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Haben installieren und bauen",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/usr/bin/env",
+        "UpdateSourceArgs": "HABEN_ROOT=\"{{$FullBaseDir}}\" HABEN_VERSION=\"{{HabenVersion}}\" HABEN_REPO=\"{{HabenRepo}}\" HABEN_BUN_VERSION=\"{{BunVersion}}\" HABEN_DB_MODE=\"{{DatabaseMode}}\" HABEN_DB_PORT=\"{{DatabasePort}}\" HABEN_PRE_UPDATE_BACKUP=\"{{PreUpdateBackup}}\" HABEN_FORCE_REBUILD=\"{{ForceRebuild}}\" TZ=\"{{TimeZone}}\" /bin/bash \"{{$FullBaseDir}}scripts/haben.sh\" install",
+        "SkipOnFailure": false
+    }
+]

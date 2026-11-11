@@ -1,0 +1,26 @@
+name: Prüfen
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  template:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Werkzeuge
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends jq shellcheck > /dev/null
+      - name: Syntax
+        run: bash -n src/haben.sh build.sh install-to-amp.sh
+      - name: ShellCheck
+        run: shellcheck -S warning src/haben.sh build.sh install-to-amp.sh
+      - name: habenupdates.json aktuell
+        run: ./build.sh --check
+      - name: JSON
+        run: |
+          for f in *.json src/*.json; do jq empty "$f"; echo "OK $f"; done
+          grep '^App.EnvironmentVariables=' haben.kvp | cut -d= -f2- | jq -e 'type == "object"' > /dev/null

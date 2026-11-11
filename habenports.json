@@ -1,0 +1,9 @@
+[
+    {
+        "Protocol": "TCP",
+        "Port": 3000,
+        "Ref": "HttpPort",
+        "Name": "Web-Oberfläche (HTTP)",
+        "Description": "HTTP-Port von Haben. Davor gehört ein Reverse Proxy mit HTTPS (Passkeys funktionieren nur über HTTPS)"
+    }
+]
